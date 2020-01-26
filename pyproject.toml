@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "vidcrafter"
+version = "0.1.0"
+description = "Convert a video to a Minecraft function!"
+authors = ["Floozutter <floozutter@gmail.com>"]
+license = "Unlicense"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+Pillow = "^7.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
