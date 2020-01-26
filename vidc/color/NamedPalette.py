@@ -1,37 +1,10 @@
-from math import sqrt
-from typing import Tuple, Callable, Dict 
+"""
+Class definition of `NamedPalette`.
+"""
 
-Color = Tuple[int, int, int]                   # RGB (red, green, blue)
-ColorMetric = Callable[[Color, Color], float]  # measures color difference
-
-
-def euclideanDistance(a: Color, b: Color) -> float:
-    return sqrt(
-            (a[0] - b[0])**2 +
-            (a[1] - b[1])**2 +
-            (a[2] - b[2])**2
-    )
-
-def squaredEuclideanDistance(a: Color, b: Color) -> float:
-    return (
-            (a[0] - b[0])**2 +
-            (a[1] - b[1])**2 +
-            (a[2] - b[2])**2
-    )
-
-def rec601LumaDistance(a: Color, b: Color) -> float:
-    return sqrt(
-            (0.299 * (a[0] - b[0]))**2 +
-            (0.587 * (a[1] - b[1]))**2 +
-            (0.114 * (a[2] - b[2]))**2
-    )
-
-def squaredRec601LumaDistance(a: Color, b: Color) -> float:
-    return (
-            (0.299 * (a[0] - b[0]))**2 +
-            (0.587 * (a[1] - b[1]))**2 +
-            (0.114 * (a[2] - b[2]))**2
-    )
+from color.metrics import squaredEuclideanDistance
+from color.colortypes import Color, ColorMetric
+from typing import Tuple, Dict
 
 
 class NamedPalette(Dict[Color, str]):
