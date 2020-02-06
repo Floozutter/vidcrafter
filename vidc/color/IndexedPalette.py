@@ -1,5 +1,5 @@
 """
-Class definition of `NamedPalette`.
+Class definition of `IndexedPalette`.
 """
 
 from color.metrics import squaredEuclideanDistance
@@ -7,23 +7,20 @@ from color.colortypes import Color, ColorMetric
 from typing import Tuple, Dict
 
 
-class NamedPalette(Dict[Color, str]):
+class IndexedPalette(Dict[Color, int]):
     """
-    Associates color values to names.
-
-    Useful for creating image mosaics by matching target image section colors
-    to the colors of the library of available images (the palette).
+    Associates color values to indices. Useful for creating image mosaics.
 
     Provides the method `nearest` to find the most similar color available in
-    the palette to a given color argument (using a customizable metric).
+    the palette to a given color argument (with a customizable metric).
     """
 
     def nearest(self,
                 color: Color,
                 metric: ColorMetric = squaredEuclideanDistance
-    ) -> Tuple[Color, str]:
+    ) -> Tuple[Color, int]:
         """
-        Get the color value and name of the nearest available palette color.
+        Get the color value and index of the nearest available palette color.
 
         A custom definition of "nearest" can be used by passing a ColorMetric.
         By default, this method uses the metric of squared Euclidean distance.
